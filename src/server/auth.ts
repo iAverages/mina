@@ -1,3 +1,4 @@
 import { GitHub } from "arctic";
+import { env } from "~/server/env";
 
-export const github = new GitHub(process.env.GITHUB_CLIENT_ID!, process.env.GITHUB_CLIENT_SECRET!);
+export const github = new GitHub(env.GITHUB_CLIENT_ID, env.GITHUB_CLIENT_SECRET);
