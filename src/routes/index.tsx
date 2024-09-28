@@ -31,7 +31,7 @@ export default function Home() {
         <main class="mx-auto p-4 text-center text-gray-700">
             <div class="mx-auto w-full max-w-3xl space-y-6 p-6">
                 <div class="space-y-2">
-                    <h2 class="text-2xl font-bold">Mina</h2>
+                    <h2 class="text-2xl font-bold">Tamaki</h2>
                     <p class="text-gray-500">
                         Simple app to display commits on a specific date in a specific repository.
                     </p>

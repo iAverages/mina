@@ -1,4 +1,4 @@
-# Mina
+# tamaki
 
 Simple app to view commits on specific days in specific repos.
 
