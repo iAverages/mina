@@ -1,5 +1,8 @@
+import dayjs from "dayjs";
 import { For, Show, Suspense, createSignal } from "solid-js";
 import { getCommits, getOrginizations, getRepos, getUser } from "~/github";
+
+const formatDate = (date: string | Date) => dayjs(date).format("HH:mm DD/MM/YYYY");
 
 export default function Home() {
     const user = getUser();
@@ -55,7 +58,7 @@ export default function Home() {
                         </select>
                     </div>
                     <div class="space-y-2">
-                        <Show when={isOrgSelected()}>
+                        <Show when={!!selectedOwner()}>
                             <h3 class="text-lg font-bold">Select Repository</h3>
                             <p class="text-gray-500">Choose the repository you would like to work with.</p>
                             <div class="space-y-2">
@@ -89,8 +92,8 @@ export default function Home() {
                         </Show>
                     </div>
                 </div>
-                <Suspense fallback={<p>Loading Commits...</p>}>
-                    <Show when={isOrgSelected()}>
+                <Show when={!!selectedDate()}>
+                    <Suspense fallback={<p>Loading Commits...</p>}>
                         <div class={"grid grid-cols-3 gap-2"}>
                             <For each={commits.data}>
                                 {(commit) => (
@@ -98,15 +101,15 @@ export default function Home() {
                                         <div class={"flex flex-col rounded bg-gray-800 p-6 text-gray-300"}>
                                             <p>{commit.commit.message}</p>
                                             <div class={"w-full items-end justify-end"}>
-                                                <p>{commit.commit.author.date}</p>
+                                                <p>{formatDate(commit.commit.author.date)}</p>
                                             </div>
                                         </div>
                                     </a>
                                 )}
                             </For>
                         </div>
-                    </Show>
-                </Suspense>
+                    </Suspense>
+                </Show>
             </div>
         </main>
     );

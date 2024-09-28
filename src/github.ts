@@ -76,7 +76,6 @@ export const getRepos = (owner: Accessor<string>, org: Accessor<boolean>) => {
         queryKey: ["repos", owner()],
         queryFn: async () => {
             if (org()) {
-                console.log("orgs");
                 return callApi<GithubRepo[]>(`orgs/${owner()}/repos`);
             }
             return callApi<GithubRepo[]>(`users/${owner()}/repos`);
