@@ -29,12 +29,12 @@ export async function GET({ nativeEvent: event }: APIEvent) {
         appendHeader(
             event,
             "Set-Cookie",
-            `${GITTHUB_USER_ID_COOKIE_NAME}=${githubUser.id}; Path=/; Secure; HttpOnly; SameSite=Lax; Max-Age=3600`
+            `${GITTHUB_USER_ID_COOKIE_NAME}=${githubUser.id}; Path=/; Secure; HttpOnly; SameSite=Lax; Max-Age=3600`,
         );
         appendHeader(
             event,
             "Set-Cookie",
-            `${GITTHUB_TOKEN_COOKIE_NAME}=${tokens.accessToken}; Path=/; Secure; SameSite=Lax; Max-Age=3600`
+            `${GITTHUB_TOKEN_COOKIE_NAME}=${tokens.accessToken}; Path=/; Secure; SameSite=Lax; Max-Age=3600`,
         );
 
         return sendRedirect(event, "/");

@@ -13,7 +13,8 @@ export default function App() {
                 <QueryClientProvider client={queryClient}>
                     <Suspense>{props.children}</Suspense>
                 </QueryClientProvider>
-            )}>
+            )}
+        >
             <FileRoutes />
         </Router>
     );

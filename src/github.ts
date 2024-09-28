@@ -173,7 +173,7 @@ export const getCommits = (owner: Accessor<string>, repo: Accessor<string>, date
 
             const d = dates() as DateRange;
             return callApi<GithubCommit[]>(
-                `repos/${owner()}/${repo()}/commits?since=${d.startDate}&until=${d.endDate}`
+                `repos/${owner()}/${repo()}/commits?since=${d.startDate}&until=${d.endDate}`,
             );
         },
     }));
