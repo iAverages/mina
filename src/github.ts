@@ -160,8 +160,11 @@ export const getCommits = (owner: Accessor<string>, repo: Accessor<string>, date
                 const since = `${base}${date.getDate() - 1}`;
                 const until = `${base}${date.getDate()}`;
 
+                const today = new Date();
+                const formattedToday = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`;
+
                 // if the date is today, only get commits since the start of the day
-                if (date.getDate() === new Date().getDate()) {
+                if (until === formattedToday) {
                     return callApi<GithubCommit[]>(`repos/${owner()}/${repo()}/commits?since=${since}`);
                 }
 
